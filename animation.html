@@ -1,0 +1,82 @@
+<html>
+  <head>
+   	<meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
+	<!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *">-->
+	
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+	<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/addresspicker.css" />
+	<script src="http://maps.google.com/maps/api/js"></script>
+	<script language="javascript" type="text/javascript" src="js/jquery-1.11.3.min.js"></script>	
+	<script language="javascript" type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+	<script language="javascript" type="text/javascript" src="js/jquery.validate.js"></script>
+	<script language="javascript" type="text/javascript" src="js/additional-methods.js"></script>
+	<script language="javascript" type="text/javascript" src="js/bootstrap.min.js"></script>
+
+    <title>Animation OREANET</title>
+
+  </head>
+  <body>
+	<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+	  <!-- Indicators -->
+	  <ol class="carousel-indicators">
+	    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+	    <li data-target="#myCarousel" data-slide-to="1"></li>
+	    <li data-target="#myCarousel" data-slide-to="2"></li>
+	    <li data-target="#myCarousel" data-slide-to="3"></li>
+	  </ol>
+
+	  <!-- Wrapper for slides -->
+	  <div class="carousel-inner" role="listbox">
+	    <div class="item active">
+	      <img src="img/cot_1.jpg">
+	      <a href="#" data-toggle="tooltip" class="bulle1" data-placement="bottom" title="Acanthaster  est une étoile de mer présente dans les récifs coralliens, elle se nourrit presque exclusivement de corail (des polypes coralliens). Elle est de couleurs vives et de dimensions imposantes (adulte elle peut atteindre un poids de 3 kg  et jusqu’à 70 cm de diamètre). Elle porte sur sa face supérieure de longues épines enduites d’un venin hautement toxique."> </a>
+	    </div>
+
+	    <div class="item">
+	      <img src="img/cor_1.jpg">
+	      <a href="#" data-toggle="tooltip" class="bulle2" title="Un récif corallien résulte de la construction d'un substrat minéral durable (formé de carbonate de calcium) secrété par des êtres vivants, principalement des coraux. Il existe de très nombreuses espèces de coraux qui forment des écosystèmes marins complexes et parmi les plus riches en biodiversité, généralement à faible profondeur. Les massifs coralliens, notamment en région tropicale, procurent des niches écologiques à de nombreux animaux qui y trouvent nourriture, refuge, protection et abri. De très nombreuses espèces de poissons en sont donc dépendantes."> </a>
+	    </div>
+
+	    <div class="item">
+	      <img src="img/cot_2.jpg">
+	      <a href="#" data-toggle="tooltip" class="bulle3" title="Le blanchissement des coraux est un phénomène de dépérissement des coraux, qui se traduit par une décoloration de celui-ci et du récif à la suite de la disparition des  polypes il reste ainsi uniquement le squelette calcaire du corail."> </a>
+	    </div>
+
+	    <div class="item">
+	      <img src="img/triton.jpg">
+	      <a href="#" data-toggle="tooltip" class="bulle4" data-placement="bottom" title="Le  Triton géant, est un mollusque de grande taille et à longue coquille spiralée. Carnassier, il se nourrit de mollusques, de crustacés et d'étoiles de mer, qu'il tue avec son aiguillon venimeux avant de les digérer entiers. Il est notamment connu pour être un des seuls prédateurs de l'Acanthaster."> </a>
+	    </div>
+	  </div>
+
+	  <!-- Left and right controls -->
+	  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+	    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+	    <span class="sr-only">Previous</span>
+	  </a>
+	  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+	    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+	    <span class="sr-only">Next</span>
+	  </a>
+	</div>
+
+	<a href="#" onclick="return app.changeStatutList()">Lien</a>
+
+	<!-- <script language="javascript" type="text/javascript" src="cordova.js"></script> -->
+	<script language="javascript" type="text/javascript" src="js/index.js"></script>
+	<script language="javascript" type="text/javascript" src="js/sql.js"></script>
+	<script language="javascript" type="text/javascript" src="js/dbutils.js"></script>
+	<script language="javascript" type="text/javascript" src="js/addresspicker.js"></script>
+	<script language="javascript" type="text/javascript">
+		app.initializeAnime();
+	</script>
+	<script>$(document).ready(function(){$('[data-toggle="tooltip"]').tooltip();});</script>
+	
+  </body>
+</html>
