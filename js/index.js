@@ -74,7 +74,7 @@ var app = {
                 }
 
                 //Si on est sur la page index.html et on est online alors
-                if(app.getUrlVars()["id"] == ""){
+                if(app.getUrlVars()["id"] == ""){   
                     
                     //On affiche le formulaire
                     document.getElementById("contentoff").id = "content";
@@ -88,7 +88,7 @@ var app = {
         );
 
         //dev mobile
-	    setTimeout(function(){app.receivedEvent('deviceready');},0);
+	    //setTimeout(function(){app.receivedEvent('deviceready');},0);
 	
     },
 
