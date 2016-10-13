@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
     <widget xmlns   = "http://www.w3.org/ns/widgets"
         xmlns:gap   = "http://phonegap.com/ns/1.0"
-        id          = "nc.oreanet.mobile"
+        id          = "nc.oreanet.mobile.aqua"
         versionCode = "1" 
         version     = "0.0.4" >
 
@@ -10,7 +10,7 @@
     <name>Oreanet NC aquarium</name>
 
     <description>
-        Oreanet NC Mobile app. 
+        Oreanet NC Mobile aqua app. 
     </description>
    
     <icon src="pin4-oreanet.png" />
