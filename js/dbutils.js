@@ -97,8 +97,8 @@ var db = {
 					
 					var idform = results.rows.item(i).id;
 					console.log("Id ======"+ idform);
-					return db.updateCOT(idform);
-					app.close();
+					db.updateCOT(idform);
+					return app.close();
 				}
 			}, function(transaction, error) {		    
 		    console.log("some error updating data "+error.message);
@@ -109,11 +109,11 @@ var db = {
 	updateCOT: function(id) {
 	    var cotsDb = db.openDB();
 	    cotsDb.transaction(function(transaction) {
-		transaction.executeSql(sql.REMOVE, [id], function(transaction, results) {
-		    console.log("update COTs status to synchronized ok");		    
-		}, function(transaction, error) {		    
-		    console.log("some error updating data "+error.message);
-		});
+			transaction.executeSql(sql.REMOVE, [id], function(transaction, results) {
+			    console.log("update COTs status to synchronized ok");		    
+			}, function(transaction, error) {		    
+			    console.log("some error updating data "+error.message);
+			});
 	    });
 	},
 
@@ -160,7 +160,9 @@ var db = {
             console.log("Liste exist "+results.rows.length);
             if(results.rows.length !=0){
             	//On affiche bouton retour
-            	document.getElementById("btn-cancel").id = "btn-cancel-on";
+            	if($('#btn-cancel').length){  
+					$('#btn-cancel').show();
+				}
             }
     
         }, function(transaction,error) {		    
