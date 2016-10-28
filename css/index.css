@@ -570,6 +570,13 @@ input[type=checkbox], input[type=radio] {
 }
 
 /*animation*/
+.Slides img{
+  width: 100%;
+}
+
+#btnSlides a {
+  width: 6%;
+}
 .bulle1 {
   position: absolute;
   top: 10%;
@@ -641,17 +648,33 @@ input[type=checkbox], input[type=radio] {
 }
 
 .tooltip{
-  max-width: 700px;
-  background-color: black;
-  border-radius: 8px;
+  display: inline;
+  position: relative;
+}
+  
+.tooltip:hover:after{
+  background: #333;
+  background: rgba(0,0,0,.8);
+  border-radius: 5px;
+  bottom: 26px;
+  color: #fff;
+  content: attr(title);
+  left: 20%;
+  padding: 5px 15px;
+  position: absolute;
+  z-index: 98;
+  width: 220px;
 }
 
-.tooltip-inner {
-  display: initial;
-}
-
-.carousel-control{
-  width: 6% !important;
+.tooltip:hover:before{
+  border: solid;
+  border-color: #333 transparent;
+  border-width: 6px 6px 0 6px;
+  bottom: 20px;
+  content: «  »;
+  left: 50%;
+  position: absolute;
+  z-index: 99;
 }
 
 /*Demo css*/
