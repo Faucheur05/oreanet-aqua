@@ -44,6 +44,10 @@ var app = {
     initializeAnime: function() {
         var parentElement = document.getElementById("img");
     },
+    //Demo
+    initializeDemo: function() {
+        app.carousel(1);
+    },
     // Application Constructor
     initialize: function() {        
         this.bindEvents();
@@ -644,14 +648,10 @@ var app = {
         }
         console.log("afiche myIndex ==="+myIndex);
         if(myIndex == 1){
-            document.getElementById("vdo_1").currentTime = 0;
-            if(document.getElementById("vdo_2").autoplay == true ){
-                document.getElementById("vdo_1").play();
-            }
-            if(document.getElementById("vdo_3").autoplay == true ){
-                document.getElementById("vdo_1").play();
-            }
-
+            var vdo1 = document.getElementById("vdo_1");
+            vdo1.currentTime = 0; 
+            var $video = $('#vdo_1'); 
+            $video.on('canplaythrough', function() { this.play(); });
             car = 5;
             temp = 48;
             app.start(54000);
@@ -661,7 +661,6 @@ var app = {
         if(myIndex == 2){
             document.getElementById("vdo_2").currentTime = 0;
             document.getElementById("vdo_2").play();
-            document.getElementById("vdo_2").autoplay = "true";
             car = 5;
             temp = 59;
             app.start(65000);
@@ -672,7 +671,6 @@ var app = {
             document.getElementById("demo-suiv").style.display = "none";
             document.getElementById("vdo_3").currentTime = 0;
             document.getElementById("vdo_3").play();
-            document.getElementById("vdo_3").autoplay = "true";
             temp = 42;
             app.start(43000);
             set = setTimeout(app.carousel, 43000, 4);
