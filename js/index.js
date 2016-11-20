@@ -64,19 +64,21 @@ var app = {
                 //console.log("On remet le splascreen");
                 //On est sur la page index.html et offline
                 app.switchOnline(0);
-                //On enlève le lien site dans le menu
-                document.getElementById("lien-site-menu").id = "lien-site-menu-off";
                 //On affiche le formulaire
                 document.getElementById("contentoff").id = "content";
                 //console.log("On affiche le formulaire");
              },
             // si on EST connecté
             function(){
+                if($('#btn-save').length){  
+                    $('#btn-save').show();
+                }
                 //Si on est sur la page index.html et on est online alors
                 if(app.getUrlVars()["id"] == null){
+                    app.switchOnline(1);
                     //console.log("On remet le splascreen");
                     //On vérifie l’existence d'une liste
-                    setTimeout(function(){ db.listCOTexist();},1000);
+                    setTimeout(function(){ db.listCOTexist();},500);
                     //On affiche le formulaire
                     document.getElementById("contentoff").id = "content";
                     //console.log("On affiche le formulaire");
@@ -194,10 +196,17 @@ var app = {
             setTimeout(function(){
                 var id = app.getUrlVars()["id"];
                 //console.log("<<<<<formulaire existant>>>>");
-                // démarrer le plugin addressPicker
-                app.addressPicker();
                 // remplir avec ces données le formulaire
                 db.reditCOTForm(id);
+                // démarrer le plugin addressPicker
+                if(app.getUrlVars()["lat"] !="" && app.getUrlVars()["lng"] !=""){
+                    var lat = app.getUrlVars()["lat"];
+                    var lng = app.getUrlVars()["lng"];
+                    app.addressPickerRedit(lat, lng);
+                }
+                else {
+                    app.addressPicker();
+                }
                 // ajouter un listener sur le formulaire avec l'id de celui-ci
                 app.addSubmitExistForm(id);
                 // ajouter un "validateur" de formulaire
@@ -214,6 +223,16 @@ var app = {
     //on récupére l'id du formulaire à ouvrir
     getFormID: function(id){
         window.location.href="./index.html?stat=on&?id="+id;
+    },
+
+    //on retourne l'id du formulaire encours
+    getID: function(){
+        return app.getUrlVars()["id"];
+    },
+
+    //on récupére l'id du formulaire à ouvrir
+    getFormLatLng: function(id){
+        db.recupLatLng(id);
     },
 
     //on remplit le formulaire chargé avec ces données
@@ -301,53 +320,11 @@ var app = {
     },
     // Turn app to offline mode
     turnOffline: function(){
-        app.updateMsg("Bienvenue sur l’application Oreanet NC, cette application sert à enregistrer toute observation d’acanthaster en Nouvelle-Calédonie afin que nous puissions les étudier. <br> La partie Hors Ligne permet  l’enregistrement de vos observations lorsque vous n’avez pas internet. <br> La partie En ligne permet l’envoie immédiat  d’un formulaire d’observation ou de modifier et  d’envoyer ceux enregistrés hors connexion.");
+        app.updateMsg("Bienvenue sur l’application Oreanet NC, cette application sert à enregistrer toute observation d’acanthaster en Nouvelle-Calédonie afin que nous puissions les étudier." + 
+                      " <br> La partie Hors Ligne permet  l’enregistrement de vos observations lorsque vous n’avez pas internet. " +
+                      " <br> La partie En ligne permet l’envoie immédiat  d’un formulaire d’observation ou de modifier et  d’envoyer ceux enregistrés hors connexion.");
     },
-    // Remove splascreen
-    open: function(){
-        console.log("OPEN");
 
-        var parentElement = document.getElementById("deviceready");
-        var listeningElement = parentElement.querySelector('.listening');
-        if(listeningElement != null){
-                listeningElement.className='event connecting row vertical-align';
-                listeningElement.addEventListener("transitionend",  function(e) {
-                listeningElement.className='event ready';
-                parentElement.style.visibility = "hidden";
-            },false);
-        }
-    },
-    // Sending form wait splashscreen
-    sending: function(){
-        console.log("SENDING");
-        window.scrollTo(0, 0);
-        //test online ou offline
-        app.isOnline(
-            // si on N'EST PAS connecté alors
-            function(){
-                var parentElement = document.getElementById("deviceready");
-                parentElement.style.visibility = "visible";
-                var listeningElement = parentElement.querySelector('.onsend');
-                if(listeningElement != null){
-                    listeningElement.className='event sending row vertical-align';          
-                }
-            },
-            // si on EST connecté
-            function(){
-                if(document.getElementById("devicereadyoff") != null){
-                    document.getElementById("devicereadyoff").id = 'deviceready';
-                }
-                document.getElementById("deviceready").style.visibility = 'hidden';
-                document.querySelector('.listening').className = 'event ready';
-                var parentElement = document.getElementById("deviceready");
-                parentElement.style.visibility = "visible";
-                var listeningElement = parentElement.querySelector('.onsend');
-                if(listeningElement != null){
-                    listeningElement.className='event sending row vertical-align';          
-                }
-            }
-        );
-    },
     // ser closing screen
     close: function(){
         console.log("CLOSE");
@@ -357,7 +334,6 @@ var app = {
         app.isOnline(
             // si on N'EST PAS connecté alors
             function(){
-                document.getElementById("lien-site-web").id = "lien-site-web-off";
                 
                 document.getElementById("msg-fin-enregistre").innerHTML = "Votre formulaire à bien été enregistré et vous pourrez l'envoyer lors de votre prochaine connexion à internet.";
             },
@@ -367,17 +343,14 @@ var app = {
                 db.listExistCLOSE();
             }
         );
-
+        document.getElementById("devicereadyoff").id = "deviceready";
         var parentElement = document.getElementById("deviceready");
-        var listeningElement = parentElement.querySelector('.sending');
-        if(listeningElement != null){
-                listeningElement.className='event sent row vertical-align';         
-        }
         var listeningElement = parentElement.querySelector('.onclose');
         listeningElement.className='event closing row vertical-align';
         listeningElement.addEventListener("transitionend",  function(e) {
-        listeningElement.className='event closed row vertical-align';
+           listeningElement.className='event closed row vertical-align';
         },false);
+        document.getElementById("content").id = "contentoff";
     },
 
     // Reload form
@@ -416,6 +389,31 @@ var app = {
         {
         distanceWidget: true
         }); 
+    },
+
+    addressPickerRedit: function(lat, long){  
+        $("#observation_localisation" ).addressPickerByGiro(
+        {
+            mapOptions: {
+                zoom: 16,
+                center: [lat, long],
+                scrollwheel: true,
+                zoomGesturesEnabled: true,
+                scrollGesturesEnabled: true,
+                mapTypeId: "hybrid"
+            },
+            distanceWidget: true,
+            distanceWidgetRadius: 300,  /* meters */
+            appendToAddressString: '',
+            geocoderOptions: {
+                language: "fr"
+            },
+            markerOptions: {
+            
+            draggable: true,
+            visible: true,
+            }
+        });
     },
 
      //On mes des champs obligatoire a saisir
@@ -487,45 +485,80 @@ var app = {
 
     //On utilise la fonction sql pour enregistrer les données
     addSubmitForm: function(){
+        var save = "false";
         $('#form-cot_admin').submit(function() {
-        console.log("form submit");
-        db.insertCOT($('#observer_name').val(), $('#observer_tel').val(), $('#observer_email').val(), $('#observation_day').val(), $('#observation_month').val(), $('#observation_year').val(),
-            $('#observation_location').val(), $('#observation_localisation').val(), $('#observation_region').val(), 
-            $('#observation_pays').val(),$('#observation_latitude').val(),$('#observation_longitude').val(),
-            $('#observation_number').val(),$('#observation_culled').val(),
-            $('#counting_method_timed_swim').val(), $('#counting_method_distance_swim').val(),$('#counting_method_other').val(),
-            $('#depth_range0').prop('checked')?$('#depth_range0').val():"",
-            $('#depth_range1').prop('checked')?$('#depth_range1').val():"",
-            $('#depth_range2').prop('checked')?$('#depth_range2').val():"",
-            $('#observation_method0').prop('checked')?$('#observation_method0').val():"",
-            $('#observation_method1').prop('checked')?$('#observation_method1').val():"",
-            $('#remarks').val(), app.getDateTime());            
-        return false;
+            //console.log("form submit");
+            db.insertCOT($('#observer_name').val(), $('#observer_tel').val(), $('#observer_email').val(), $('#observation_day').val(), $('#observation_month').val(), $('#observation_year').val(),
+                $('#observation_location').val(), $('#observation_localisation').val(), $('#observation_region').val(), 
+                $('#observation_pays').val(),$('#observation_latitude').val(),$('#observation_longitude').val(),
+                $('#observation_number').val(),$('#observation_culled').val(),
+                $('#counting_method_timed_swim').val(), $('#counting_method_distance_swim').val(),$('#counting_method_other').val(),
+                $('#depth_range0').prop('checked')?$('#depth_range0').val():"",
+                $('#depth_range1').prop('checked')?$('#depth_range1').val():"",
+                $('#depth_range2').prop('checked')?$('#depth_range2').val():"",
+                $('#observation_method0').prop('checked')?$('#observation_method0').val():"",
+                $('#observation_method1').prop('checked')?$('#observation_method1').val():"",
+                $('#remarks').val(), app.getDateTime(), save);          
+            return false;
+    }); 
+    },
+    
+    //on utilise la fonction sql pour modifier les données
+    addSubmitExistForm: function(id){
+        var save = "false";
+        $('#form-cot_admin').submit(function() {
+            //console.log("form submit");
+            db.updateFormCot($('#observer_name').val(), $('#observer_tel').val(), $('#observer_email').val(), $('#observation_day').val(), $('#observation_month').val(), $('#observation_year').val(),
+                $('#observation_location').val(), $('#observation_localisation').val(), $('#observation_region').val(), 
+                $('#observation_pays').val(), $('#observation_latitude').val(), $('#observation_longitude').val(),
+                $('#observation_number').val(), $('#observation_culled').val(), 
+                $('#counting_method_timed_swim').val(), $('#counting_method_distance_swim').val(), $('#counting_method_other').val(),
+                $('#depth_range0').prop('checked')?$('#depth_range0').val():"",
+                $('#depth_range1').prop('checked')?$('#depth_range1').val():"",
+                $('#depth_range2').prop('checked')?$('#depth_range2').val():"",
+                $('#observation_method0').prop('checked')?$('#observation_method0').val():"",
+                $('#observation_method1').prop('checked')?$('#observation_method1').val():"",
+                $('#remarks').val(), id, save);          
+            return false;
     }); 
     },
 
-    //on utilise la fonction sql pour modifier les données
-    addSubmitExistForm: function(id){
-        $('#form-cot_admin').submit(function() {
-        console.log("form submit");
-        db.updateFormCot($('#observer_name').val(), $('#observer_tel').val(), $('#observer_email').val(), $('#observation_day').val(), $('#observation_month').val(), $('#observation_year').val(),
-            $('#observation_location').val(), $('#observation_localisation').val(), $('#observation_region').val(), 
-            $('#observation_pays').val(), $('#observation_latitude').val(), $('#observation_longitude').val(),
-            $('#observation_number').val(), $('#observation_culled').val(), 
-            $('#counting_method_timed_swim').val(), $('#counting_method_distance_swim').val(), $('#counting_method_other').val(),
-            $('#depth_range0').prop('checked')?$('#depth_range0').val():"",
-            $('#depth_range1').prop('checked')?$('#depth_range1').val():"",
-            $('#depth_range2').prop('checked')?$('#depth_range2').val():"",
-            $('#observation_method0').prop('checked')?$('#observation_method0').val():"",
-            $('#observation_method1').prop('checked')?$('#observation_method1').val():"",
-            $('#remarks').val(), id);          
-        return false;
-    }); 
+    saveForm: function(){
+        var save = "true";
+        event.preventDefault();
+        if(app.getID()==""){
+            //console.log("allo insert id");
+            db.insertCOT($('#observer_name').val(), $('#observer_tel').val(), $('#observer_email').val(), $('#observation_day').val(), $('#observation_month').val(), $('#observation_year').val(),
+                $('#observation_location').val(), $('#observation_localisation').val(), $('#observation_region').val(), 
+                $('#observation_pays').val(),$('#observation_latitude').val(),$('#observation_longitude').val(),
+                $('#observation_number').val(),$('#observation_culled').val(),
+                $('#counting_method_timed_swim').val(), $('#counting_method_distance_swim').val(),$('#counting_method_other').val(),
+                $('#depth_range0').prop('checked')?$('#depth_range0').val():"",
+                $('#depth_range1').prop('checked')?$('#depth_range1').val():"",
+                $('#depth_range2').prop('checked')?$('#depth_range2').val():"",
+                $('#observation_method0').prop('checked')?$('#observation_method0').val():"",
+                $('#observation_method1').prop('checked')?$('#observation_method1').val():"",
+                $('#remarks').val(), app.getDateTime(), save);  
+        }
+        else {
+            //console.log("allo save finaliz");
+            db.updateFormCot($('#observer_name').val(), $('#observer_tel').val(), $('#observer_email').val(), $('#observation_day').val(), $('#observation_month').val(), $('#observation_year').val(),
+                $('#observation_location').val(), $('#observation_localisation').val(), $('#observation_region').val(), 
+                $('#observation_pays').val(), $('#observation_latitude').val(), $('#observation_longitude').val(),
+                $('#observation_number').val(), $('#observation_culled').val(), 
+                $('#counting_method_timed_swim').val(), $('#counting_method_distance_swim').val(), $('#counting_method_other').val(),
+                $('#depth_range0').prop('checked')?$('#depth_range0').val():"",
+                $('#depth_range1').prop('checked')?$('#depth_range1').val():"",
+                $('#depth_range2').prop('checked')?$('#depth_range2').val():"",
+                $('#observation_method0').prop('checked')?$('#observation_method0').val():"",
+                $('#observation_method1').prop('checked')?$('#observation_method1').val():"",
+                $('#remarks').val(), app.getID(), save);  
+        }
+        setTimeout(function(){app.cancel();},1000);
     },
 
     submitForm: function(){
         if($("#form-cot_admin" ).valid()){
-            app.sending();
             $("#form-cot_admin" ).submit();
         
             //test online ou offline
@@ -560,6 +593,7 @@ var app = {
                 document.getElementById("counting_method_timed_swim").value = "";
                 document.getElementById("counting_method_timed_swim").setAttribute('readonly','readonly');
         } else {
+                document.getElementById("counting_method_timed_swim").focus();
                 document.getElementById("counting_method_timed_swim").removeAttribute('readonly');
         }
     },
@@ -569,6 +603,7 @@ var app = {
                 document.getElementById("counting_method_distance_swim").value = "";
                 document.getElementById("counting_method_distance_swim").setAttribute('readonly','readonly');
         } else {
+                document.getElementById("counting_method_distance_swim").focus();
                 document.getElementById("counting_method_distance_swim").removeAttribute('readonly');
         }
     },
@@ -578,6 +613,7 @@ var app = {
                 document.getElementById("counting_method_other").value = "";
                 document.getElementById("counting_method_other").setAttribute('readonly','readonly');
         } else {
+                document.getElementById("counting_method_other").focus();
                 document.getElementById("counting_method_other").removeAttribute('readonly');
         }
     },

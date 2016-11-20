@@ -31,7 +31,7 @@ var db = {
 				observation_localisation, observation_region, observation_country, 
 				observation_latitude, observation_longitude, observation_number, observation_culled, 
 				counting_method_timed_swim, counting_method_distance_swim, counting_method_other, 
-				depth_range0, depth_range1, depth_range2, observation_method0, observation_method1, remarks, date_enregistrement) {
+				depth_range0, depth_range1, depth_range2, observation_method0, observation_method1, remarks, date_enregistrement, save) {
 		var cotsDb = db.openDB();
 
 		var depth_range = ( depth_range0.length > 0 ? depth_range0 : "")
@@ -60,12 +60,16 @@ var db = {
 			            },
 			            // si on EST connecté
 			            function(){
-			            	db.getidFormInsertCOT(observer_name, observer_tel, observer_email, observation_day, observation_month, observation_year, observation_location, 
+			            	if (save == "true"){
+			            		app.updateMsg("Votre formulaire a bien été sauvegarder");
+			            	}else if(save == "false"){
+			            		db.getidFormInsertCOT(observer_name, observer_tel, observer_email, observation_day, observation_month, observation_year, observation_location, 
 																observation_localisation, observation_region, observation_country, 
 																observation_latitude, observation_longitude, observation_number, observation_culled, 
 																counting_method_timed_swim, counting_method_distance_swim, counting_method_other, 
 																depth_range, observation_method, 
-																remarks, date_enregistrement);
+																remarks, date_enregistrement);	
+			            	}
 			            }
 			        );
 
@@ -216,7 +220,7 @@ var db = {
             	}
             	
           		//on remplit le tableau
-                  listbdd = "<tr><td data-th='Créé le'>" + results.rows.item(i).date_enregistrement + "</td><td data-th='Date'>" + jour_day + "/" + mois_month + "/" + results.rows.item(i).observation_year + "</td><td data-th='Nbr acanthasters'>" + results.rows.item(i).observation_number + "</td><td data-th='Lieu'>" + results.rows.item(i).observation_location + "</td><td data-th='Supprimer'><button type=button href=# onclick='return app.supprForm("+results.rows.item(i).id+")' class='btn fa fa-trash-o fa-lg' class='btn fa' data-toggle='tooltip' data-placement='bottom' title='Cliquez pour supprimer le formulaire'></button></td>" + "</td><td data-th='Finaliser'><button type=button href=# onclick='return app.getFormID("+results.rows.item(i).id+")' class='btn fa fa-pencil btn-success' class='btn fa' data-toggle='tooltip' data-placement='bottom' title='Cliquez pour finaliser le formulaire'> Finaliser</button></td>" + "</tr>";
+                  listbdd = "<tr><td data-th='Créé le'>" + results.rows.item(i).date_enregistrement + "</td><td data-th='Date'>" + jour_day + "/" + mois_month + "/" + results.rows.item(i).observation_year + "</td><td data-th='Nbr acanthasters'>" + results.rows.item(i).observation_number + "</td><td data-th='Lieu'>" + results.rows.item(i).observation_location + "</td><td data-th='Supprimer'><button type=button href=# onclick='return app.supprForm("+results.rows.item(i).id+")' class='btn fa fa-trash-o fa-lg' class='btn fa' data-toggle='tooltip' data-placement='bottom' title='Cliquez pour supprimer le formulaire'></button></td>" + "</td><td data-th='Finaliser'><button type=button href=# onclick='return app.getFormLatLng("+results.rows.item(i).id+")' class='btn fa fa-pencil btn-success' class='btn fa' data-toggle='tooltip' data-placement='bottom' title='Cliquez pour finaliser le formulaire'> Finaliser</button></td>" + "</tr>";
                     parentElement.querySelector('.cot_list_forms').innerHTML +=  listbdd;
                     
                }
@@ -264,6 +268,21 @@ var db = {
         });
     },
 
+    //On récupère la latitude et la longitude
+    recupLatLng: function(id){
+
+        var cotsDb = window.openDatabase("cot_admin", "1.0", "COT table", 1024*1000);
+        return cotsDb.transaction(function(transaction) {
+        transaction.executeSql(sql.SELECTreditCOTForm, [id], function(transaction, results) {
+    		for (i = 0; i < results.rows.length; i++){
+        		window.location.href="./index.html?stat=on&?id="+ id +
+        		"&?lat=" + results.rows.item(i).observation_latitude +
+        		"&?lng=" + results.rows.item(i).observation_longitude;
+    		}
+        }, null);
+        });
+    },
+
     //On modifier un tuple déjà existant grâce a son id
     updateFormCot: function(observer_name, observer_tel, observer_email, 
 			    			observation_day, observation_month, observation_year, observation_location, 
@@ -273,7 +292,7 @@ var db = {
 							counting_method_timed_swim, counting_method_distance_swim, counting_method_other, 
 							depth_range0, depth_range1, depth_range2, 
 							observation_method0, observation_method1, 
-							remarks, id) {
+							remarks, id, save) {
 		var cotsDb = db.openDB();
 		
 		var depth_range = ( depth_range0.length > 0 ? depth_range0 : "")
@@ -296,8 +315,13 @@ var db = {
 					depth_range, observation_method, 
 					remarks, id], 
 				function(transaction, results) {
-					db.updateCOT(id);
-					return app.close();	
+					if (save == "true"){
+			            		app.updateMsg("Votre formulaire a bien été sauvegarder");
+			            	}else if(save == "false"){
+			            		db.updateCOT(id);
+								return app.close();		
+			            	}
+					
 				}, function(e) {
 		    			return 0;
 				}
