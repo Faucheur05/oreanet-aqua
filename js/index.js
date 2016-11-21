@@ -56,7 +56,6 @@ var app = {
         }
         //On enlève offline
         app.switchOnline(1);
-        
         //test online ou offline
         app.isOnline(
             // si on N'EST PAS connecté alors
@@ -66,6 +65,7 @@ var app = {
                 app.switchOnline(0);
                 //On affiche le formulaire
                 document.getElementById("contentoff").id = "content";
+                window.alert("Pour passer en mode En Ligne cliquez sur le bouton Hors Ligne et vice versa!");
                 //console.log("On affiche le formulaire");
              },
             // si on EST connecté
@@ -722,11 +722,12 @@ var app = {
             return { 
             result1: x[myIndex-1].style.display = "inline-block", 
             result2: document.getElementById("pass-demo").style.display = "none", 
-            result3: document.getElementById("p-titre-demo").innerHTML = "", 
+            result3: document.getElementById("p-titre-demo").style.display = "none", 
             result4: clearInterval(interval), 
             result5: document.getElementById("timer").style.display = "none",
             result6: document.getElementById("btns-demo").style.display = "none",
-            result6: document.getElementById("demo-suiv").style.display = "none"};
+            result6: document.getElementById("demo-suiv").style.display = "none",
+            result7: document.getElementById("demo").style.height = "100%"};
         }
         if (myIndex > x.length) {myIndex = 1}
         x[myIndex-1].style.display = "block";
@@ -739,11 +740,12 @@ var app = {
             z[myIndex-1].style.display = "none";
             document.getElementById("fin-demo").style.display = "inline-block";
             document.getElementById("pass-demo").style.display = "none";
-            document.getElementById("p-titre-demo").innerHTML = "";
+            document.getElementById("p-titre-demo").style.display = "none";
             clearInterval(interval);
             document.getElementById("timer").style.display = "none";
             document.getElementById("btns-demo").style.display = "none";
             document.getElementById("demo-suiv").style.display = "none";
+            document.getElementById("demo").style.height = "100%";
         },
 
         action: function (){
