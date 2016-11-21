@@ -663,13 +663,12 @@ input[type=checkbox], input[type=radio] {
 #demo {
   text-align: center;
   width: 100%;
-
   background-color: #EBEBEB;
 }
 
 .mySlides video {
   display: inline-block;
-  width: 85%;
+  width: 75%;
 }
 
 .mySlides p {
