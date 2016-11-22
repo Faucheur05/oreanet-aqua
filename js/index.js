@@ -698,18 +698,18 @@ var app = {
             document.getElementById("vdo_2").currentTime = 0;
             document.getElementById("vdo_2").play();
             car = 5;
-            temp = 59;
-            app.start(65000);
-            settimeout = setTimeout(app.depart, 60000, 6000);
-            set = setTimeout(app.carousel, 66200, 3);
+            temp = 81;
+            app.start(86000);
+            settimeout = setTimeout(app.depart, 82000, 6000);
+            set = setTimeout(app.carousel, 87200, 3);
         }
         if(myIndex == 3){
             document.getElementById("demo-suiv").style.display = "none";
             document.getElementById("vdo_3").currentTime = 0;
             document.getElementById("vdo_3").play();
-            temp = 42;
-            app.start(43000);
-            set = setTimeout(app.carousel, 43000, 4);
+            temp = 32;
+            app.start(33000);
+            set = setTimeout(app.carousel, 33000, 4);
         }
         if(myIndex == 4){
             var result1;
@@ -749,7 +749,7 @@ var app = {
         },
 
         action: function (){
-            clearInterval(interval);    
+            clearInterval(interval);   
         },
 
         timer: function (){
