@@ -27,9 +27,6 @@ var car;
 var intervaldepart = null;
 var settimedepart;
 var settimeout;
-var timeP1;
-var timeP2;
-var timeP1bis;
 
 var app = {
     switchOnline: function(isOnline){
@@ -94,7 +91,7 @@ var app = {
         );
 
         //dev mobile
-        setTimeout(function(){app.receivedEvent('deviceready');},0);
+        //setTimeout(function(){app.receivedEvent('deviceready');},0);
     
     },
 
@@ -737,167 +734,58 @@ var app = {
             
         },
 
-    stopcarousel: function () {
-        clearTimeout(set);
-        var z = document.getElementsByClassName("mySlides");
-        z[myIndex-1].style.display = "none";
-        document.getElementById("fin-demo").style.display = "inline-block";
-        document.getElementById("pass-demo").style.display = "none";
-        document.getElementById("p-titre-demo").style.display = "none";
-        clearInterval(interval);
-        document.getElementById("timer").style.display = "none";
-        document.getElementById("btns-demo").style.display = "none";
-        document.getElementById("demo-suiv").style.display = "none";
-        document.getElementById("demo").style.height = "100%";
-    },
+        stopcarousel: function () {
+            clearTimeout(set);
+            var z = document.getElementsByClassName("mySlides");
+            z[myIndex-1].style.display = "none";
+            document.getElementById("fin-demo").style.display = "inline-block";
+            document.getElementById("pass-demo").style.display = "none";
+            document.getElementById("p-titre-demo").style.display = "none";
+            clearInterval(interval);
+            document.getElementById("timer").style.display = "none";
+            document.getElementById("btns-demo").style.display = "none";
+            document.getElementById("demo-suiv").style.display = "none";
+            document.getElementById("demo").style.height = "100%";
+        },
 
-    action: function (){
-        clearInterval(interval);   
-    },
+        action: function (){
+            clearInterval(interval);   
+        },
 
-    timer: function (){
-        document.getElementById("timer").innerHTML = temp + " seconde(s) de vidéo restantes";
-        if(temp != 0){
-            temp--;
+        timer: function (){
+            document.getElementById("timer").innerHTML = temp + " seconde(s) de vidéo restantes";
+            if(temp != 0){
+                temp--;
+            }
+        },
+
+        start: function (time){
+            interval = setInterval(app.timer, 1000);
+            settime = setTimeout(app.action, time);
+        },
+
+        stop: function (){
+            clearInterval(interval);  
+        },
+
+        decompte: function (){
+            document.getElementById("demo-suiv").innerHTML = "Dans "+ car + " seconde(s) la demo suivante";
+            if(car == 0){
+                console.log("ici");
+                document.getElementById("demo-suiv").style.display = "none"; 
+            }
+            console.log("afiche car ==="+car);
+            if(car != 0){
+                car--;
+            }
+
+        },
+
+        depart: function (time){
+            document.getElementById("demo-suiv").innerHTML = "Dans 5 seconde(s) la demo suivante";
+            document.getElementById("demo-suiv").style.display = "inline";
+            intervaldepart = setInterval(app.decompte, 1000);
+            settimedepart = setTimeout(app.stop, time);
         }
-    },
-
-    start: function (time){
-        interval = setInterval(app.timer, 1000);
-        settime = setTimeout(app.action, time);
-    },
-
-    stop: function (){
-        clearInterval(interval);  
-    },
-
-    decompte: function (){
-        document.getElementById("demo-suiv").innerHTML = "Dans "+ car + " seconde(s) la demo suivante";
-        if(car == 0){
-            console.log("ici");
-            document.getElementById("demo-suiv").style.display = "none"; 
-        }
-        console.log("afiche car ==="+car);
-        if(car != 0){
-            car--;
-        }
-
-    },
-
-    depart: function (time){
-        document.getElementById("demo-suiv").innerHTML = "Dans 5 seconde(s) la demo suivante";
-        document.getElementById("demo-suiv").style.display = "inline";
-        intervaldepart = setInterval(app.decompte, 1000);
-        settimedepart = setTimeout(app.stop, time);
-    },
-
-    showPopup: function(box, p) {
-        // ici on insère dans notre page html notre div gris
-        $("#"+box).before('<div id="grayBack"></div>');
-     
-         // enfin, on fait apparaître en 300 ms notre div gris de fond, et une fois
-         // son apparition terminée, on fait apparaître en fondu notre popup
-        $("#grayBack").css('opacity', 0).fadeTo(300, 0.5, function () { $("#"+box).fadeIn(500); });
-
-        if(p == "p1p2"){
-            timeP1 = setTimeout(function(){
-                var b = document.getElementsByClassName("p1");
-                for(var i = 0, length = b.length; i < length; i++) {
-                    b[i].style.display = "inline";
-                }
-            },5000);
-
-            timeP2 = setTimeout(function(){
-                var b = document.getElementsByClassName("p2");
-                for(var i = 0, length = b.length; i < length; i++) {
-                    b[i].style.display = "inline";
-                }
-                var c = document.getElementsByClassName("fleches");
-                for(var i = 0, length = c.length; i < length; i++) {
-                    c[i].style.display = "inline";
-                }
-            },10000);
-        }else {
-            timeP1bis = setTimeout(function(){
-                var b = document.getElementsByClassName("p1bis");
-                for(var i = 0, length = b.length; i < length; i++) {
-                    b[i].style.display = "inline";
-                }
-                var c = document.getElementsByClassName("fleches");
-                for(var i = 0, length = c.length; i < length; i++) {
-                    c[i].style.display = "inline";
-                }
-            },5000);
-        }
-    },
- 
-    hidePopup: function(box) {
- 
-        // on fait disparaître le gris de fond rapidement
-        $("#grayBack").fadeOut('fast', function () { $(this).remove() });
-     
-        // on fait disparaître le popup à la même vitesse
-        $("#"+box).fadeOut('fast', function () { $(this).hide() });
-
-        var a = document.getElementsByClassName("avant");
-        for(var i = 0, length = a.length; i < length; i++) {
-            a[i].style.display = "inline";
-        }
-
-        var b = document.getElementsByClassName("apres");
-            for(var i = 0, length = b.length; i < length; i++) {
-            b[i].style.display = "none";
-        }
-
-        clearTimeout(timeP1);
-        clearTimeout(timeP1bis);
-        clearTimeout(timeP2);
-
-        var c = document.getElementsByClassName("p1");
-        for(var i = 0, length = c.length; i < length; i++) {
-            c[i].style.display = "none";
-        }
-
-        var d = document.getElementsByClassName("p2");
-        for(var i = 0, length = d.length; i < length; i++) {
-            d[i].style.display = "none";
-        }
-
-        var e = document.getElementsByClassName("fleches");
-        for(var i = 0, length = e.length; i < length; i++) {
-            e[i].style.display = "none";
-        }
-
-        var f = document.getElementsByClassName("p1bis");
-            for(var i = 0, length = f.length; i < length; i++) {
-                f[i].style.display = "none";
-        }
-    },
-
-    suivant: function(){
-
-        var a = document.getElementsByClassName("avant");
-        for(var i = 0, length = a.length; i < length; i++) {
-            a[i].style.display = "none";
-        }
-
-        var b = document.getElementsByClassName("apres");
-        for(var i = 0, length = b.length; i < length; i++) {
-            b[i].style.display = "inline";
-        }
-
-    },
-
-    precedent: function(){
-
-        var a = document.getElementsByClassName("avant");
-        for(var i = 0, length = a.length; i < length; i++) {
-            a[i].style.display = "inline";
-        }
-        var b = document.getElementsByClassName("apres");
-        for(var i = 0, length = b.length; i < length; i++) {
-            b[i].style.display = "none";
-        }
-    }
         
 };
