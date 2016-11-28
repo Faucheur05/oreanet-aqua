@@ -585,54 +585,6 @@ input[type=checkbox], input[type=radio] {
 #btnSlides a {
   width: 6%;
 }
-.bulle1 {
-  position: absolute;
-  top: 10%;
-  left: 25%;
-  width: 40%;
-  height: 40%;
-  display: inline;
-}
-
-.bulle2 {
-  position: absolute;
-  top: 54%;
-  left: 6%;
-  width: 87%;
-  height: 40%;
-}
-
-.bulle3 {
-  position: absolute;
-  top: 10%;
-  left: 35%;
-  width: 40%;
-  height: 40%;
-}
-
-.bulle4 {
-  position: absolute;
-  top: 34%;
-  left: 47%;
-  width: 27%;
-  height: 40%;
-}
-
-.bulle5 {
-  position: absolute;
-  top: 40%;
-  left: 35%;
-  width: 40%;
-  height: 40%;
-}
-
-.bulle6 {
-  position: absolute;
-  top: 21%;
-  left: 5%;
-  width: 38%;
-  height: 40%;
-}
 
 #btn-slide {
   position: absolute;
@@ -653,6 +605,143 @@ input[type=checkbox], input[type=radio] {
   top: 55%;
   left: 5%;
   width: 90%;
+}
+
+#grayBack 
+{
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     background-color: black;
+     z-index: 1999;
+     opacity: 0.5;
+}
+
+.popup 
+{
+     position: fixed;
+     display: none;
+     left: 50%;
+     top: 20%;
+     z-index: 2000;
+     padding: 20px;
+     width: 600px;
+     margin-left: -300px;
+     background-color: #EEEEEE;
+     font-size: 12px;
+     line-height: 16px;
+     color: #202020;
+     border : 3px outset #555555;
+}
+
+.popup h1{
+  font-size: 22px;
+}
+
+.popup img{
+  float: left;
+  padding-right: 10px;
+}
+
+.close {
+  font-size: 30px !important;
+}
+
+.close:hover {
+  opacity: 0.7 !important;
+}
+
+.popup a {
+  color: red !important;
+}
+
+.popup a:hover {
+  color: red !important;
+}
+
+.popup .fleches{
+  text-align: center;
+}
+
+.suiv{
+  opacity: 0.2;
+  font-size: 35px;
+}
+
+.prec{
+  opacity: 0.2;
+  font-size: 35px;
+}
+
+.suiv:hover{
+  opacity: 0.7;
+}
+
+.prec:hover{
+  opacity: 0.7;
+}
+
+a:hover{
+  text-decoration: none!important;
+}
+
+.apres{
+  display: none;
+}
+
+.apres p {
+  animation-duration: 0.3s;
+  animation-name: droite_gauche;
+}
+
+.fleches{
+  display: none;
+}
+
+.p1{
+  display: none;
+}
+
+.p1bis{
+  display: none;
+}
+
+.p2{
+  display: none;
+}
+
+.p2{
+  animation-duration: 0.3s;
+  animation-name: droite_gauche;
+}
+
+.p1{
+  animation-duration: 0.3s;
+  animation-name: droite_gauche;
+}
+
+.p1bis{
+  animation-duration: 0.3s;
+  animation-name: droite_gauche;
+}
+
+.p2{
+  animation-duration: 0.3s;
+  animation-name: droite_gauche;
+}
+
+@keyframes droite_gauche {
+  from {
+    margin-left: 100%;
+    width: 300%; 
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
 }
 
 /*Demo css*/
