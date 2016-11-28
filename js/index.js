@@ -31,6 +31,7 @@ var timeP1;
 var timeP2;
 var timeP1bis;
 
+
 var app = {
     switchOnline: function(isOnline){
         if(isOnline){
