@@ -616,6 +616,7 @@ input[type=checkbox], input[type=radio] {
 }
 
 #text_1{
+  padding: 5px;
   color: black;
   background-color: rgba(255, 255, 255, 0.5);
   font-weight: bold;
@@ -626,6 +627,7 @@ input[type=checkbox], input[type=radio] {
 }
 
 #text_2{
+  padding: 5px;
   color: black;
   background-color: rgba(255, 255, 255, 0.5);
   font-weight: bold;
@@ -644,6 +646,7 @@ input[type=checkbox], input[type=radio] {
 }
 
 #text_5{
+  padding: 5px;
   color: black;
   background-color: rgba(255, 255, 255, 0.5);
   font-weight: bold;
@@ -654,6 +657,7 @@ input[type=checkbox], input[type=radio] {
 }
 
 #text_6{
+  padding: 5px;
   color: black;
   background-color: rgba(255, 255, 255, 0.5);
   font-weight: bold;
@@ -664,6 +668,7 @@ input[type=checkbox], input[type=radio] {
 }
 
 #text_7{
+  padding: 5px;
   color: black;
   background-color: rgba(255, 255, 255, 0.5);
   font-weight: bold;
@@ -674,6 +679,7 @@ input[type=checkbox], input[type=radio] {
 }
 
 #text_8{
+  padding: 5px;
   color: black;
   background-color: rgba(255, 255, 255, 0.5);
   font-weight: bold;
