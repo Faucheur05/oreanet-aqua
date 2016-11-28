@@ -616,8 +616,8 @@ input[type=checkbox], input[type=radio] {
 }
 
 #text_1{
-  color: white;
-  text-shadow: 0 1px 0 black;
+  color: black;
+  background-color: rgba(255, 255, 255, 0.5);
   font-weight: bold;
   width: 350px;
   position: absolute;
@@ -626,9 +626,9 @@ input[type=checkbox], input[type=radio] {
 }
 
 #text_2{
+  color: black;
+  background-color: rgba(255, 255, 255, 0.5);
   font-weight: bold;
-  text-shadow: 0 1px 0 black;
-  color: white;
   width: 270px;
   position: absolute;
   top:100px;
@@ -645,16 +645,17 @@ input[type=checkbox], input[type=radio] {
 
 #text_5{
   color: black;
+  background-color: rgba(255, 255, 255, 0.5);
   font-weight: bold;
   width: 300px;
   position: absolute;
-  top:50px;
-  left:980px;
+  top:95px;
+  left:895px;
 }
 
 #text_6{
-  color: white;
-  text-shadow: 0 1px 0 black;
+  color: black;
+  background-color: rgba(255, 255, 255, 0.5);
   font-weight: bold;
   width: 450px;
   position: absolute;
@@ -663,8 +664,8 @@ input[type=checkbox], input[type=radio] {
 }
 
 #text_7{
-  color: white;
-  text-shadow: 0 1px 0 black;
+  color: black;
+  background-color: rgba(255, 255, 255, 0.5);
   font-weight: bold;
   width: 500px;
   position: absolute;
@@ -673,10 +674,10 @@ input[type=checkbox], input[type=radio] {
 }
 
 #text_8{
-  color: white;
-  text-shadow: 0 1px 0 black;
+  color: black;
+  background-color: rgba(255, 255, 255, 0.5);
   font-weight: bold;
-  width: 600px;
+  width: 580px;
   position: absolute;
   top:450px;
   left:30px;
@@ -748,7 +749,7 @@ input[type=checkbox], input[type=radio] {
 
 .map { 
   width: 100%; /*960px;*/ 
-  height:400px; 
+  height:520px; 
   margin-bottom : 10px; 
 } 
 
