@@ -53,7 +53,8 @@ var app = {
         app.revenirAuMenu(200000);
     },
     // Application Constructor
-    initialize: function() {        
+    initialize: function() {
+         app.revenirAuMenu(60000);     
         this.bindEvents();
         if(app.getUrlVars()["stat"] == null){
             window.location.href="./index.html?stat=off&?id="+app.getUrlVars()["id"];
@@ -93,7 +94,6 @@ var app = {
                 }
             }
         );
-        app.revenirAuMenu(60000);
         //dev mobile
         //setTimeout(function(){app.receivedEvent('deviceready');},0);
     
