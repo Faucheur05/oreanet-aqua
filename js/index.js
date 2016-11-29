@@ -28,6 +28,7 @@ var intervaldepart = null;
 var settimedepart;
 var settimeout;
 var settimeauto;
+var settimeRetourMenu;
 var mycompte = 0;
 
 var app = {
@@ -49,6 +50,7 @@ var app = {
     //Demo
     initializeDemo: function() {
         app.carousel(1);
+        app.revenirAuMenu(200000);
     },
     // Application Constructor
     initialize: function() {        
@@ -91,7 +93,7 @@ var app = {
                 }
             }
         );
-
+        app.revenirAuMenu(60000);
         //dev mobile
         //setTimeout(function(){app.receivedEvent('deviceready');},0);
     
@@ -107,6 +109,7 @@ var app = {
         
         //afficher la liste
         db.listCOT();
+        app.revenirAuMenu(60000);
     },
     // Bind Event Listeners
     bindEvents: function() {
@@ -684,7 +687,6 @@ var app = {
         for (i = 0; i < x.length; i++) {
            x[i].style.display = "none";
         }
-        console.log("afiche myIndex ==="+myIndex);
         if(myIndex == 1){
             var vdo1 = document.getElementById("vdo_1");
             vdo1.currentTime = 0; 
@@ -772,7 +774,6 @@ var app = {
             console.log("ici");
             document.getElementById("demo-suiv").style.display = "none"; 
         }
-        console.log("afiche car ==="+car);
         if(car != 0){
             car--;
         }
@@ -798,9 +799,23 @@ var app = {
         settimeauto = setTimeout(app.automatic, 8000);
     },
 
-    remarAuto: function() {
-        clearInterval(settimeauto);
-        settimeauto = setTimeout(app.automatic, 8000);
+    redemarAuto: function() {
+        clearTimeout(settimeauto);
+        settimeauto = setTimeout(app.automatic, 1000);
     },
-        
+
+    revenirAuMenu: function(seconde) {
+        clearTimeout(settimeRetourMenu);
+        settimeRetourMenu = setTimeout(function(){window.location.href='./animation.html';}, seconde);
+        var s=0;
+        setInterval(function(){
+           console.log("secondes=="+s);
+           s++;
+        }, 1000);
+    },
+
+    retourMenu: function(){
+        clearTimeout(settimeRetourMenu);
+        window.location.href='./animation.html'; 
+    }
 };
