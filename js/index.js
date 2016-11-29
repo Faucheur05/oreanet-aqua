@@ -807,11 +807,6 @@ var app = {
     revenirAuMenu: function(seconde) {
         clearTimeout(settimeRetourMenu);
         settimeRetourMenu = setTimeout(function(){window.location.href='./animation.html';}, seconde);
-        var s=0;
-        setInterval(function(){
-           console.log("secondes=="+s);
-           s++;
-        }, 1000);
     },
 
     retourMenu: function(){
