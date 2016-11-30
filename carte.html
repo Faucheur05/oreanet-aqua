@@ -24,6 +24,7 @@
   
 <body class="front home " role="document">
     <nav id="nav-bar-retour" class="navbar navbar-default navbar-fixed-bottom">
+        <p id="decompteMenu"></p>
         <button id="btn-menu" onclick="return app.retourMenu();" class="btn">Retour au menu</button>
     </nav>
 
@@ -42,7 +43,7 @@
                                         <h2 style="text-align:center;">Carte interactive de répartition des acanthasters en Nouvelle-Calédonie</h2> 
                                         <div id="container3">  
                                             <div id="map" class="map"></div> 
-                                                <div id="legend" class="well"> 
+                                            <div id="legend" class="well"> 
                                                 <hr/> 
                                                 <h3>Niveau d'infestation</h3> 
                                                 <img id="legend_image" alt="" src="http://gis-oreanet.ird.nc/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&STRICT=false&style=vcot&legend_options=fontName:Arial;fontAntiAliasing:true;fontColor:0x000033;fontSize:14;dpi:80" />  
@@ -70,7 +71,7 @@
     function init() { 
 
         //retoure au menu dans X secondes
-        app.revenirAuMenu(120000);
+        app.revenirAuMenu(120000, 120);
 
         format = 'image/png'; 
         map = new OpenLayers.Map('map', { 

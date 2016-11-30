@@ -24,6 +24,7 @@
     <body>
         <p id="p-titre-demo" class="w3-center">Voici des démonstrations du fonctionnement de l'application mobile Oreanet NC</p>
         <button id="pass-demo" href="#" onclick="return app.stopcarousel();" class="btn_new_form">Passer les demos</button>
+        <p id="decompteMenu"></p>
         <div id="btns-demo">
             <button id="bnt_demo_1" href="#" onclick="return app.carousel(1);" class="btn-demo">Demo formulaire offline</button>
             <button href="#" onclick="return app.carousel(2);" class="btn-demo">Demo formulaire online</button>
@@ -53,7 +54,7 @@
             <div class="mySlides" id="fin-demo">
                 <img src="img/logo.png">
                 <button href="#" onclick="return window.location.href='./index.html'" class="btn_new_form">Tester l'application Oreanet NC</button>
-                <button href="#" onclick="return app.retourMenu();" class="btn_new_form">Revenir au menu</button>
+                <button href="#" onclick="return app.retourMenu(); app.retourMenu();" class="btn_new_form">Revenir au menu</button>
                 <button href="#" onclick="return window.location.href='./demo.html'" class="btn_new_form">Revoir les demos</button>
             </div>
 

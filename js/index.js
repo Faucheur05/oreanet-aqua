@@ -29,7 +29,9 @@ var settimedepart;
 var settimeout;
 var settimeauto;
 var settimeRetourMenu;
+var intervalDecompteMenu;
 var mycompte = 0;
+var s;
 
 var app = {
     switchOnline: function(isOnline){
@@ -50,11 +52,11 @@ var app = {
     //Demo
     initializeDemo: function() {
         app.carousel(1);
-        app.revenirAuMenu(200000);
+        app.revenirAuMenu(200000, 200);
     },
     // Application Constructor
     initialize: function() {
-         app.revenirAuMenu(60000);     
+         app.revenirAuMenu(60000, 60);     
         this.bindEvents();
         if(app.getUrlVars()["stat"] == null){
             window.location.href="./index.html?stat=off&?id="+app.getUrlVars()["id"];
@@ -109,7 +111,7 @@ var app = {
         
         //afficher la liste
         db.listCOT();
-        app.revenirAuMenu(60000);
+        app.revenirAuMenu(60000, 60);
     },
     // Bind Event Listeners
     bindEvents: function() {
@@ -659,12 +661,12 @@ var app = {
     changeStatut: function(){
 
         if(app.getUrlVars()["stat"] == "on" || app.getUrlVars()["stat"] == null){
-            console.log("passe mode offline");
+            //console.log("passe mode offline");
             window.location.href="./index.html?stat=off&?id=";
         }
         
         else if(app.getUrlVars()["stat"] == "off"){
-            console.log("passe mode online");
+            //console.log("passe mode online");
             setTimeout(function(){ db.listCOTexist();},1000);
         }
         
@@ -771,7 +773,7 @@ var app = {
     decompte: function (){
         document.getElementById("demo-suiv").innerHTML = "Dans "+ car + " seconde(s) la demo suivante";
         if(car == 0){
-            console.log("ici");
+            //console.log("ici");
             document.getElementById("demo-suiv").style.display = "none"; 
         }
         if(car != 0){
@@ -793,7 +795,8 @@ var app = {
         for (i = 0; i < x.length; i++) {
            x[i].style.display = "none";  
         }
-        mycompte++;
+        //mycompte++;
+        mycompte=5;
         if (mycompte > x.length) {mycompte = 1}    
         x[mycompte-1].style.display = "block";  
         settimeauto = setTimeout(app.automatic, 8000);
@@ -804,9 +807,15 @@ var app = {
         settimeauto = setTimeout(app.automatic, 1000);
     },
 
-    revenirAuMenu: function(seconde) {
+    revenirAuMenu: function(seconde, decompte) {
+        s = decompte;
         clearTimeout(settimeRetourMenu);
+        clearInterval(intervalDecompteMenu);
         settimeRetourMenu = setTimeout(function(){window.location.href='./animation.html';}, seconde);
+        intervalDecompteMenu = setInterval(function(){
+            document.getElementById("decompteMenu").innerHTML = s + " s";
+            s--;
+        }, 1000);
     },
 
     retourMenu: function(){
