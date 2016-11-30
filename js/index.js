@@ -811,8 +811,8 @@ var app = {
                 for(var i = 0, length = b.length; i < length; i++) {
                     b[i].style.display = "inline";
                 }
-            },5000);
-        }, 10000);
+            },8000);
+        }, 16000);
     },
 
     redemarAuto: function() {
@@ -829,7 +829,7 @@ var app = {
                 for(var i = 0, length = b.length; i < length; i++) {
                     b[i].style.display = "inline";
                 }
-            },5000);
+            },8000);
         }, 1000);
     },
 
