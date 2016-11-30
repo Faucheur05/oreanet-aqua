@@ -795,11 +795,10 @@ var app = {
         for (i = 0; i < x.length; i++) {
            x[i].style.display = "none";  
         }
-        //mycompte++;
-        mycompte=5;
+        mycompte++;
         if (mycompte > x.length) {mycompte = 1}    
         x[mycompte-1].style.display = "block";  
-        settimeauto = setTimeout(app.automatic, 8000);
+        settimeauto = setTimeout(app.automatic, 3000);
     },
 
     redemarAuto: function() {

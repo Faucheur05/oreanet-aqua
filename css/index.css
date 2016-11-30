@@ -710,8 +710,32 @@ input[type=checkbox], input[type=radio] {
   color: black;
   position: absolute;
   top:730px;
-  left:12%;
 }
+
+#phrase_1{
+  left: 247px;
+}
+
+#phrase_2{
+  left: 189.5px;
+}
+
+#phrase_3{
+  left: 265.5px;
+}
+
+#phrase_4{
+  left: 90px;
+}
+
+#phrase_6{
+  left: 267.75px;
+}
+
+#phrase_7{
+  left: 93.5px;
+}
+
 /*Demo css*/
 .mySlides {
   display:none;
