@@ -26,22 +26,20 @@
 			<div class="Slides">
 	  			<img src="img/blanc.jpg">
 	  			
-	  			<button onclick="return app.redemarAuto();" id="btn-slide" class="btn_new_form" data-toggle="tooltip" data-placement="bottom" title="Cliquez pour commencer">Comprendre les acanthasters et leurs impacts sur les récifs coralliens</button>
+	  			<button onclick="return app.redemarAuto(1);" id="btn-slide" class="btn_new_form" data-toggle="tooltip" data-placement="bottom" title="Cliquez pour commencer">Comprendre les acanthasters et leurs impacts sur les récifs coralliens</button>
 
 	  			<button href="#" id="btn-oreanet" onclick="return window.location.href='./demo.html'" class="btn_new_form" data-toggle="tooltip" data-placement="bottom" title="Cliquez pour voir l'application Oreanet NC">Découvrir l’application de suivi participatif Oreanet NC</button>
 
 	  			<button href="#" id="btn-carte" onclick="return window.location.href='./carte.html'" class="btn_new_form" data-toggle="tooltip" data-placement="bottom" title="Cliquez pour voir la carte">Voir la carte des signalements citoyens</button>
 		  	</div>
 
-			<div class="Slides">
+			<div onmousedown="app.mouseDown();" onmouseup="app.mouseUp();" class="Slides">
 				<h1> L'acanthaster </h1>
 				<img src="img/Box_Acanthaster.jpg">
 				<div class="text_1">
 					<p>
 				    	Acanthaster planci est une des plus grandes étoiles de mer tropicales  Hérissée d’épines venimeuses, elle vit dans les récifs coralliens du Pacifique et de l’Océan Indien. Ne la touchez surtout pas : sa piqûre est très douloureuse !
 				    </p>
-				    <a href="#" class="btn_suite" onclick="return app.suite();">></a>
-				    <br/>
 			        <p class="suite_texte">
 						Peu visible durant la journée, l’acanthaster sort de sa cachette pendant la nuit pour partir en quête de sa proie : le corail. Grâce à l’action coordonnée de ses centaines de pieds, elle peut atteindre une vitesse de 10-20 mètres à l’heure !
 					</p>
@@ -58,8 +56,6 @@
 					<p>
 			            La toutoute ou grand triton (Charonia tritonis) est un des rares prédateurs osant s’attaquer aux acanthasters adultes. Totalement insensible à ses épines, elle l’attire à l’intérieur de sa carapace pour la consommer vivante. Mais son appétit est limité : pas plus d’une acanthaster par semaine !
 			        </p>
-			        <a href="#" class="btn_suite" onclick="return app.suite();">></a>
-			        <br/>
 			        <p class="suite_texte">
 						Des crevettes ou certains poissons comme le napoléon, les perroquets à bosse, les balistes, attaquent parfois les acanthasters. Mais lorsque leur nombre diminue à cause de la surpêche, ces espèces ne peuvent plus jouer plus leur rôle de « maintien de l’ordre »...
 			        </p>
@@ -76,8 +72,6 @@
 				    <p>
 			        	Les acanthasters adultes se nourrissent exclusivement de corail vivant. Les cicatrices blanches qu’elles laissent derrière elles sont un bon indice : si vous en apercevez, il y a de fortes chances qu’une acanthaster fasse sa sieste digestive bien cachée à proximité...
 			        </p>
-			        <a href="#" class="btn_suite" onclick="return app.suite();">></a>
-			        <br/>
 			        <p class="suite_texte">
 						En consommant de préférence les coraux à croissance rapide (par exemple les Acropora branchus), elles laissent à d’autres espèces la possibilité de s’installer. Elles contribuent ainsi au maintien de la biodiversité corallienne et au dynamisme de l’écosystème.  
 			        </p>
@@ -94,8 +88,6 @@
 					<p>
 			        	Normalement, les acanthasters sont rares : en 10 minutes de nage, vous ne devriez pas en voir plus de quelques-unes, surtout la journée. Mais parfois le système s’emballe : les acanthasters se multiplient de manière incontrôlable et envahissent les récifs, dévastant tout sur leur passage. Un peu comme les invasions de sauterelles en milieu terrestre !
 			        </p>
-			        <a href="#" class="btn_suite" onclick="return app.suite();">></a>
-			        <br/>
 			        <p class="suite_texte">
 						Ces épisodes d’infestation (« outbreaks ») sont parmi les plus graves perturbations affectant les récifs coralliens. Plus d’un tiers des récifs de la région Pacifique seraient actuellement affectés,  avec des mortalités de coraux massives pouvant dépasser 90% dans les zones les plus touchées.
 		        	</p>
@@ -119,8 +111,6 @@
 		        	<p>
 			            Ces dernières années, on signale de plus en plus d’infestations d’acanthasters. Pourquoi ? La sensibilisation du public et des scientifiques y est surement pour quelque chose, mais pas seulement. 
 			        </p>
-			        <a href="#" class="btn_suite" onclick="return app.suite();">></a>
-			        <br/>
 			        <p class="suite_texte">
 						Un des grands suspects est… le changement climatique. L’augmentation de la température des eaux de surface et leur enrichissement en nutriments dans les zones côtières sont des facteurs favorables à la survie des larves d’acanthaster, donc à l’augmentation des populations d’adultes atteignant les récifs.
 		        	</p>
@@ -137,8 +127,6 @@
 			        <p>
 			            Même s’il existe des preuves historiques montrant que les récifs coralliens peuvent se rétablir après coup, ces proliférations ne font qu’exercer encore plus de pression sur des systèmes déjà affaiblis par la surpêche, les pollutions, le changement climatique etc. 
 			        </p>
-			        <a href="#" class="btn_suite" onclick="return app.suite();">></a>
-			        <br/>
 			        <p class="suite_texte">
 						Les effets en cascade de la disparition des coraux peuvent avoir des répercussions très néfastes sur l’écosystème tout entier : baisse importante de la diversité et de l’abondance de poissons et des invertébrés associés, voire disparition complète de certaines espèces. D’où la vive inquiétude des pays dans lesquels les ressources côtières constituent la base de la pêche vivrière traditionnelle...
 			        </p>
@@ -155,8 +143,6 @@
 					<p>
 			            Aucune méthode ne permet à l’heure actuelle de lutter efficacement contre les infestations d’acanthasters. La plus courante consiste à envoyer des plongeurs pour les prélever manuellement, puis à les détruire à terre. Un travail de titan !
 			        </p>
-			        <a href="#" class="btn_suite" onclick="return app.suite();">></a>
-			        <br/>
 			        <p class="suite_texte">
 						Autre possibilité : injecter une solution toxique directement dans les acanthasters. Presque tout y est passé : produits chimiques et même produits d’entretien ménagers ou désherbants ! Si certains sont efficaces, ils peuvent avoir des effets néfastes sur l’environnement marin.
 			    	</p>
@@ -165,6 +151,17 @@
 		    		En 2014, l’IRD a découvert une nouvelle méthode très efficace : des injections de jus de citron ou de vinaigre, 100% écologiques et peu coûteuses !  
 		    	</p>
 		   	</div>
+
+		   	<div id="btnSlides">
+		  	  	<a class="left carousel-control" onclick="app.plusDivs(-1)"">
+			  		<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+			  		<span class="sr-only">Previous</span>
+			 	</a>
+				<a class="right carousel-control" onclick="app.plusDivs(+1)">
+				   	<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				    <span class="sr-only">Next</span>
+				 </a>
+			 </div>
 
 		</div>
 	<script language="javascript" type="text/javascript" src="cordova.js"></script>

@@ -609,7 +609,7 @@ input[type=checkbox], input[type=radio] {
 
 .Slides h1 {
   color: #F7811B;
-  margin-left: 20px;
+  margin-left: 70px;
   font-weight: bold;
   position: absolute;
   top:10px;
@@ -623,7 +623,7 @@ input[type=checkbox], input[type=radio] {
   width: 350px;
   position: absolute;
   top:35px;
-  left:900px;
+  left:850px;
 }
 
 .text_2{
@@ -634,7 +634,7 @@ input[type=checkbox], input[type=radio] {
   width: 300px;
   position: absolute;
   top:30px;
-  left:950px;
+  left:900px;
 }
 
 .text_3{
@@ -645,7 +645,7 @@ input[type=checkbox], input[type=radio] {
   width: 270px;
   position: absolute;
   top:100px;
-  left:1000px;
+  left:930px;
 }
 
 .text_4{
@@ -656,7 +656,7 @@ input[type=checkbox], input[type=radio] {
   width: 300px;
   position: absolute;
   top:250px;
-  left:30px;
+  left:70px;
 }
 
 .text_5{
@@ -678,7 +678,7 @@ input[type=checkbox], input[type=radio] {
   width: 450px;
   position: absolute;
   top:100px;
-  left:770px;
+  left:760px;
 }
 
 .text_7{
@@ -700,9 +700,9 @@ input[type=checkbox], input[type=radio] {
   width: 580px;
   position: absolute;
   top:450px;
-  left:30px;
+  left:70px;
 }
-
+/*
 .suite_texte{
   display: none;
 }
@@ -727,7 +727,7 @@ a:hover{
 
 .btn_suite{
   font-size: 35px;
-}
+}*/
 
 .phrase_en_bas{
   font-weight: bold;

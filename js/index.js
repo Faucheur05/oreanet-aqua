@@ -32,6 +32,7 @@ var settimeRetourMenu;
 var settimeSuiteTexte;
 var intervalDecompteMenu;
 var mycompte = 0;
+var slideIndex;
 var s;
 
 var app = {
@@ -815,30 +816,42 @@ var app = {
         }, 16000);
     },
 
-    redemarAuto: function() {
+    redemarAuto: function(numSlide) {
+        mycompte = numSlide;
         clearTimeout(settimeauto);
-        settimeauto = setTimeout(function(){
-            app.automatic();
-            clearTimeout(settimeSuiteTexte);
-            var a = document.getElementsByClassName("suite_texte");
-            for(var i = 0, length = a.length; i < length; i++) {
-                a[i].style.display = "none";
+        app.automatic();
+        clearTimeout(settimeSuiteTexte);
+        var a = document.getElementsByClassName("suite_texte");
+        for(var i = 0, length = a.length; i < length; i++) {
+            a[i].style.display = "none";
+        }
+        settimeSuiteTexte = setTimeout(function(){
+            var b = document.getElementsByClassName("suite_texte");
+            for(var i = 0, length = b.length; i < length; i++) {
+                b[i].style.display = "inline";
             }
-            settimeSuiteTexte = setTimeout(function(){
-                var b = document.getElementsByClassName("suite_texte");
-                for(var i = 0, length = b.length; i < length; i++) {
-                    b[i].style.display = "inline";
-                }
-            },8000);
-        }, 1000);
+        },8000);
     },
 
-    suite: function(){
-        clearTimeout(settimeSuiteTexte);
-        var b = document.getElementsByClassName("suite_texte");
-        for(var i = 0, length = b.length; i < length; i++) {
-            b[i].style.display = "inline";
+    /*showDivs(mycompte);*/
+
+    plusDivs: function(n) {
+        if(mycompte == 1 && n== -1){
+            mycompte = 10;
+            console.log("ici");
         }
+        mycompte = mycompte + n -1;
+        app.redemarAuto(mycompte);
+    },
+
+    mouseDown: function() {
+        console.log("on sarete a =="+ mycompte);
+        clearTimeout(settimeauto);
+    },
+
+    mouseUp: function() {
+        console.log("on reprend =="+ mycompte);
+        app.redemarAuto(mycompte - 1);
     },
 
     revenirAuMenu: function(seconde, decompte) {
