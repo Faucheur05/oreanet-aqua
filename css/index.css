@@ -615,7 +615,7 @@ input[type=checkbox], input[type=radio] {
   top:10px;
 }
 
-#text_1{
+.text_1{
   padding: 5px;
   color: black;
   background-color: rgba(255, 255, 255, 0.5);
@@ -626,7 +626,7 @@ input[type=checkbox], input[type=radio] {
   left:900px;
 }
 
-#text_2{
+.text_2{
   padding: 5px;
   color: black;
   background-color: rgba(255, 255, 255, 0.5);
@@ -637,7 +637,7 @@ input[type=checkbox], input[type=radio] {
   left:950px;
 }
 
-#text_3{
+.text_3{
   padding: 5px;
   color: black;
   background-color: rgba(255, 255, 255, 0.5);
@@ -648,7 +648,7 @@ input[type=checkbox], input[type=radio] {
   left:1000px;
 }
 
-#text_4{
+.text_4{
   padding: 5px;
   color: black;
   background-color: rgba(255, 255, 255, 0.5);
@@ -659,7 +659,7 @@ input[type=checkbox], input[type=radio] {
   left:30px;
 }
 
-#text_5{
+.text_5{
   padding: 5px;
   color: black;
   background-color: rgba(255, 255, 255, 0.5);
@@ -670,7 +670,7 @@ input[type=checkbox], input[type=radio] {
   left:895px;
 }
 
-#text_6{
+.text_6{
   padding: 5px;
   color: black;
   background-color: rgba(255, 255, 255, 0.5);
@@ -681,7 +681,7 @@ input[type=checkbox], input[type=radio] {
   left:770px;
 }
 
-#text_7{
+.text_7{
   padding: 5px;
   color: black;
   background-color: rgba(255, 255, 255, 0.5);
@@ -692,7 +692,7 @@ input[type=checkbox], input[type=radio] {
   left:650px;
 }
 
-#text_8{
+.text_8{
   padding: 5px;
   color: black;
   background-color: rgba(255, 255, 255, 0.5);
@@ -701,6 +701,32 @@ input[type=checkbox], input[type=radio] {
   position: absolute;
   top:450px;
   left:30px;
+}
+
+.suite_texte{
+  display: none;
+}
+
+.Slides a:hover {
+  color: red !important;
+  opacity: 0.2;
+}
+
+.Slides a {
+  color: red !important;
+  opacity: 0.5;
+}
+
+a{
+  text-decoration: none!important;
+}
+
+a:hover{
+  text-decoration: none!important;
+}
+
+.btn_suite{
+  font-size: 35px;
 }
 
 .phrase_en_bas{
@@ -712,27 +738,27 @@ input[type=checkbox], input[type=radio] {
   top:730px;
 }
 
-#phrase_1{
+.phrase_1{
   left: 247px;
 }
 
-#phrase_2{
+.phrase_2{
   left: 189.5px;
 }
 
-#phrase_3{
+.phrase_3{
   left: 265.5px;
 }
 
-#phrase_4{
+.phrase_4{
   left: 90px;
 }
 
-#phrase_6{
+.phrase_6{
   left: 267.75px;
 }
 
-#phrase_7{
+.phrase_7{
   left: 93.5px;
 }
 

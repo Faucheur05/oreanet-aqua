@@ -29,6 +29,7 @@ var settimedepart;
 var settimeout;
 var settimeauto;
 var settimeRetourMenu;
+var settimeSuiteTexte;
 var intervalDecompteMenu;
 var mycompte = 0;
 var s;
@@ -798,12 +799,46 @@ var app = {
         mycompte++;
         if (mycompte > x.length) {mycompte = 1}    
         x[mycompte-1].style.display = "block";  
-        settimeauto = setTimeout(app.automatic, 3000);
+        settimeauto = setTimeout(function(){
+            app.automatic();
+            clearTimeout(settimeSuiteTexte);
+            var a = document.getElementsByClassName("suite_texte");
+            for(var i = 0, length = a.length; i < length; i++) {
+                a[i].style.display = "none";
+            }
+            settimeSuiteTexte = setTimeout(function(){
+                var b = document.getElementsByClassName("suite_texte");
+                for(var i = 0, length = b.length; i < length; i++) {
+                    b[i].style.display = "inline";
+                }
+            },5000);
+        }, 10000);
     },
 
     redemarAuto: function() {
         clearTimeout(settimeauto);
-        settimeauto = setTimeout(app.automatic, 1000);
+        settimeauto = setTimeout(function(){
+            app.automatic();
+            clearTimeout(settimeSuiteTexte);
+            var a = document.getElementsByClassName("suite_texte");
+            for(var i = 0, length = a.length; i < length; i++) {
+                a[i].style.display = "none";
+            }
+            settimeSuiteTexte = setTimeout(function(){
+                var b = document.getElementsByClassName("suite_texte");
+                for(var i = 0, length = b.length; i < length; i++) {
+                    b[i].style.display = "inline";
+                }
+            },5000);
+        }, 1000);
+    },
+
+    suite: function(){
+        clearTimeout(settimeSuiteTexte);
+        var b = document.getElementsByClassName("suite_texte");
+        for(var i = 0, length = b.length; i < length; i++) {
+            b[i].style.display = "inline";
+        }
     },
 
     revenirAuMenu: function(seconde, decompte) {
