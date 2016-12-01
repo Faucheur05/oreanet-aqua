@@ -51,8 +51,6 @@ var app = {
     //animation
     initializeAnime: function() {
         app.automatic();
-        //boucle sur menu toute les 5min
-        app.revenirAuMenu(320000, 0);
     },
     //Demo
     initializeDemo: function() {
@@ -697,6 +695,9 @@ var app = {
            x[i].style.display = "none";
         }
         if(myIndex == 1){
+            document.getElementById("bnt_demo_1").style.backgroundColor = "#EE9A4D";
+            document.getElementById("bnt_demo_2").style.backgroundColor = "white";
+            document.getElementById("bnt_demo_3").style.backgroundColor = "white";
             var vdo1 = document.getElementById("vdo_1");
             vdo1.currentTime = 0; 
             var $video = $('#vdo_1'); 
@@ -708,6 +709,9 @@ var app = {
             set = setTimeout(app.carousel, 55200, 2);
         }
         if(myIndex == 2){
+            document.getElementById("bnt_demo_1").style.backgroundColor = "white";
+            document.getElementById("bnt_demo_2").style.backgroundColor = "#EE9A4D";
+            document.getElementById("bnt_demo_3").style.backgroundColor = "white";
             document.getElementById("vdo_2").currentTime = 0;
             document.getElementById("vdo_2").play();
             car = 5;
@@ -717,6 +721,9 @@ var app = {
             set = setTimeout(app.carousel, 87200, 3);
         }
         if(myIndex == 3){
+            document.getElementById("bnt_demo_1").style.backgroundColor = "white";
+            document.getElementById("bnt_demo_2").style.backgroundColor = "white";
+            document.getElementById("bnt_demo_3").style.backgroundColor = "#EE9A4D";
             document.getElementById("demo-suiv").style.display = "none";
             document.getElementById("vdo_3").currentTime = 0;
             document.getElementById("vdo_3").play();
@@ -866,11 +873,13 @@ var app = {
         if(play == true){
             clearTimeout(settimeauto);
             play = false;
+            app.revenirAuMenu(60000, 0);
             document.getElementById("playPause").className = "glyphicon glyphicon-pause";
         }
         else if(play == false){
             app.redemarAuto(mycompte - 1);
             play = true;
+            clearTimeout(settimeRetourMenu);
             document.getElementById("playPause").className = "glyphicon glyphicon-play";
         }
         
