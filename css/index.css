@@ -580,7 +580,7 @@ input[type=checkbox], input[type=radio] {
 /*animation*/
 .Slides {
   width: 1280px;
-  height: 727px;
+  height: 728px;
 }
 #btnSlides a {
   width: 6%;
@@ -889,5 +889,4 @@ input[type=checkbox], input[type=radio] {
   position: absolute;
   top: 12px;
   left: -296px
-
 }
