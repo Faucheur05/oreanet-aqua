@@ -51,16 +51,19 @@ var app = {
     //animation
     initializeAnime: function() {
         app.automatic();
+        //boucle sur menu toute les 5min
         app.revenirAuMenu(300000, 0);
     },
     //Demo
     initializeDemo: function() {
         app.carousel(1);
+        //revien au menu au bout de 200s
         app.revenirAuMenu(200000, 200);
     },
     // Application Constructor
     initialize: function() {
-         app.revenirAuMenu(60000, 60);     
+        //revien au menu au bout de 60s
+        app.revenirAuMenu(60000, 60);     
         this.bindEvents();
         if(app.getUrlVars()["stat"] == null){
             window.location.href="./index.html?stat=off&?id="+app.getUrlVars()["id"];
@@ -115,6 +118,7 @@ var app = {
         
         //afficher la liste
         db.listCOT();
+        //revien au menu au bout de 60s
         app.revenirAuMenu(60000, 60);
     },
     // Bind Event Listeners
@@ -658,10 +662,12 @@ var app = {
         return datetime;
     },
 
+    //revenir a la liste
     cancel: function(){
         window.location.href="./list.html";
     },
 
+    //passer de Hors-ligne a En ligne
     changeStatut: function(){
 
         if(app.getUrlVars()["stat"] == "on" || app.getUrlVars()["stat"] == null){
@@ -676,10 +682,7 @@ var app = {
         
     },
 
-    changeStatutList: function(){
-        window.location.href="./index.html?stat=off&?id=";
-    },
-
+    //lance les vidéos de demo successivement
     carousel: function(index) {
         myIndex=index;
         clearTimeout(set);
@@ -744,6 +747,7 @@ var app = {
             
         },
 
+    //fait passer les vidéos de demo et affiche le menu
     stopcarousel: function () {
         clearTimeout(set);
         var z = document.getElementsByClassName("mySlides");
@@ -758,6 +762,7 @@ var app = {
         document.getElementById("demo").style.height = "100%";
     },
 
+    //affiche le temps de vidéo restant
     timer: function (){
         document.getElementById("timer").innerHTML = temp + " seconde(s) de vidéo restantes";
         if(temp != 0){
@@ -765,15 +770,18 @@ var app = {
         }
     },
 
+    //lance le timer toute les secondes ou bout d'un temps donné
     start: function (time){
         interval = setInterval(app.timer, 1000);
-        settime = setTimeout(app.action, time);
+        settime = setTimeout(app.stop, time);
     },
 
+    //arrête le timer
     stop: function (){
         clearInterval(interval);  
     },
 
+    //affiche un décompte de 5s avant la vidéo suivante
     decompte: function (){
         document.getElementById("demo-suiv").innerHTML = "Dans "+ car + " seconde(s) la demo suivante";
         if(car == 0){
@@ -786,13 +794,20 @@ var app = {
 
     },
 
+    //lance le décompte au bout d'un temps donné
     depart: function (time){
         document.getElementById("demo-suiv").innerHTML = "Dans 5 seconde(s) la demo suivante";
         document.getElementById("demo-suiv").style.display = "inline";
         intervaldepart = setInterval(app.decompte, 1000);
-        settimedepart = setTimeout(app.stop, time);
+        settimedepart = setTimeout(app.arret, time);
     },
 
+    //arrête le decompte
+    arret: function (){
+        clearInterval(intervaldepart);  
+    },
+
+    //slides show automatique (diapo)
     automatic: function() {
         var i;
         var x = document.getElementsByClassName("Slides");
@@ -818,6 +833,7 @@ var app = {
         }, 16000);
     },
 
+    //redémarre le diapo a un slide précis 
     redemarAuto: function(numSlide) {
         mycompte = numSlide;
         clearTimeout(settimeauto);
@@ -835,8 +851,7 @@ var app = {
         },8000);
     },
 
-    /*showDivs(mycompte);*/
-
+    //permet de changer de slide (next-previous)
     plusDivs: function(n) {
         if(mycompte == 1 && n== -1){
             mycompte = 10;
@@ -846,6 +861,7 @@ var app = {
         app.redemarAuto(mycompte);
     },
 
+    //on arrête ou on redémarre le diapo
     playPause: function() {
         if(play == true){
             clearTimeout(settimeauto);
@@ -860,6 +876,7 @@ var app = {
         
     },
 
+    //retour au menu au bout de X s
     revenirAuMenu: function(seconde, decompte) {
         if(decompte == 0){
             clearTimeout(settimeRetourMenu);
@@ -876,6 +893,7 @@ var app = {
         }
     },
 
+    //bouton retour au menu
     retourMenu: function(){
         clearTimeout(settimeRetourMenu);
         window.location.href='./animation.html'; 
