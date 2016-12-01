@@ -51,6 +51,7 @@ var app = {
     //animation
     initializeAnime: function() {
         app.automatic();
+        app.revenirAuMenu(600000, 0);
     },
     //Demo
     initializeDemo: function() {
@@ -860,14 +861,19 @@ var app = {
     },
 
     revenirAuMenu: function(seconde, decompte) {
-        s = decompte;
-        clearTimeout(settimeRetourMenu);
-        clearInterval(intervalDecompteMenu);
-        settimeRetourMenu = setTimeout(function(){window.location.href='./animation.html';}, seconde);
-        intervalDecompteMenu = setInterval(function(){
-            document.getElementById("decompteMenu").innerHTML = s + " s";
-            s--;
-        }, 1000);
+        if(decompte == 0){
+            clearTimeout(settimeRetourMenu);
+            settimeRetourMenu = setTimeout(function(){window.location.href='./animation.html';}, seconde);
+        }else{
+            s = decompte;
+            clearTimeout(settimeRetourMenu);
+            clearInterval(intervalDecompteMenu);
+            settimeRetourMenu = setTimeout(function(){window.location.href='./animation.html';}, seconde);
+            intervalDecompteMenu = setInterval(function(){
+                document.getElementById("decompteMenu").innerHTML = s + " s";
+                s--;
+            }, 1000);
+        }
     },
 
     retourMenu: function(){
