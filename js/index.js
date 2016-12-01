@@ -52,7 +52,7 @@ var app = {
     initializeAnime: function() {
         app.automatic();
         //boucle sur menu toute les 5min
-        app.revenirAuMenu(300000, 0);
+        app.revenirAuMenu(320000, 0);
     },
     //Demo
     initializeDemo: function() {
