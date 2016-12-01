@@ -33,7 +33,7 @@
 	  			<button href="#" id="btn-carte" onclick="return window.location.href='./carte.html'" class="btn_new_form" data-toggle="tooltip" data-placement="bottom" title="Cliquez pour voir la carte">Voir la carte des signalements citoyens</button>
 		  	</div>
 
-			<div onmousedown="app.mouseDown();" onmouseup="app.mouseUp();" class="Slides">
+			<div onclick="app.playPause();" class="Slides">
 				<h1> L'acanthaster </h1>
 				<img src="img/Box_Acanthaster.jpg">
 				<div class="text_1">
@@ -49,7 +49,7 @@
 		        </p>
 		    </div>
 
-	        <div class="Slides">
+	        <div onclick="app.playPause();" class="Slides">
 				<h1> Le Triton </h1>
 				<img src="img/Box_Triton.jpg">
 				<div class="text_2">
@@ -65,7 +65,7 @@
 		        </p>
 			</div>
 
-			<div class="Slides">
+			<div onclick="app.playPause();" class="Slides">
 				<h1> Le blanchissement </h1>
 				<img src="img/Box_Blanchissement.jpg">
 			    <div class="text_3">
@@ -81,7 +81,7 @@
 		        </p>
 	        </div>
 
-			<div class="Slides">
+			<div onclick="app.playPause();" class="Slides">
 				<h1> Outbreaks </h1>
 				<img src="img/Box_Outbreak.jpg">
 				<div class="text_4">
@@ -97,14 +97,14 @@
 	        	</p>
 			</div>
 
-			<div class="Slides">
+			<div onclick="app.playPause();" class="Slides">
 				<img src="img/Box_oreanet.jpg">
 				<p class="text_5">
 		            La Nouvelle-Calédonie est vaste ! Qui, mieux que les usagers du lagon, qu’ils soient pêcheurs, plongeurs ou amateurs de ballades nautiques, saurait garder un œil sur nos récifs ? Depuis son lancement par l’IRD en 2014, la plate-forme de suivi participatif OREANET (« Oceania Regional Acanthaster Network ») permet à toute personne observant des acanthasters de les signaler via un site web ou une application smartphone gratuite.
 	        	</p>
 			</div>
 
-	        <div class="Slides">
+	        <div onclick="app.playPause();" class="Slides">
 				<h1> La faute du changement climatique </h1>
 				<img src="img/Box_Climat.jpg">
 	        	<div class="text_6">
@@ -115,12 +115,12 @@
 						Un des grands suspects est… le changement climatique. L’augmentation de la température des eaux de surface et leur enrichissement en nutriments dans les zones côtières sont des facteurs favorables à la survie des larves d’acanthaster, donc à l’augmentation des populations d’adultes atteignant les récifs.
 		        	</p>
 	        	</div>
-	        	<p class="phrase_en_bas phrase_6">
+	        	<p onclick="app.playPause();" class="phrase_en_bas phrase_6">
 	        		Une seule acanthaster femelle peut pondre jusqu’à 60 millions d’œufs !
 	        	</p>
 	        </div>
 
-	        <div class="Slides">
+	        <div onclick="app.playPause();" class="Slides">
 				<h1> Les conséquences </h1>
 				<img src="img/Box_Consequences.jpg">
 		        <div class="text_7 ">
@@ -136,7 +136,7 @@
 		        </p>
 		    </div>
 
-		    <div class="Slides">
+		    <div onclick="app.playPause();" class="Slides">
 				<h1> Quelles solutions ? </h1>
 				<img src="img/Box_Solutions.jpg">
 				<div class="text_8">
@@ -151,7 +151,7 @@
 		    		En 2014, l’IRD a découvert une nouvelle méthode très efficace : des injections de jus de citron ou de vinaigre, 100% écologiques et peu coûteuses !  
 		    	</p>
 		   	</div>
-
+		   	<span id="playPause" class="glyphicon glyphicon-play"></span>
 		   	<div id="btnSlides">
 		  	  	<a class="left carousel-control" onclick="app.plusDivs(-1)"">
 			  		<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>

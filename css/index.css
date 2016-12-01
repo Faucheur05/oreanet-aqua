@@ -762,6 +762,13 @@ a:hover{
   left: 93.5px;
 }
 
+#playPause{
+  color: #F7811B;
+  font-size: 25px;
+  position: absolute;
+  top:770px;
+  left:1242px;
+}
 /*Demo css*/
 .mySlides {
   display:none;

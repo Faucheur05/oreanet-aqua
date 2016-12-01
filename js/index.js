@@ -33,6 +33,7 @@ var settimeSuiteTexte;
 var intervalDecompteMenu;
 var mycompte = 0;
 var slideIndex;
+var play = true;
 var s;
 
 var app = {
@@ -844,14 +845,18 @@ var app = {
         app.redemarAuto(mycompte);
     },
 
-    mouseDown: function() {
-        console.log("on sarete a =="+ mycompte);
-        clearTimeout(settimeauto);
-    },
-
-    mouseUp: function() {
-        console.log("on reprend =="+ mycompte);
-        app.redemarAuto(mycompte - 1);
+    playPause: function() {
+        if(play == true){
+            clearTimeout(settimeauto);
+            play = false;
+            document.getElementById("playPause").className = "glyphicon glyphicon-pause";
+        }
+        else if(play == false){
+            app.redemarAuto(mycompte - 1);
+            play = true;
+            document.getElementById("playPause").className = "glyphicon glyphicon-play";
+        }
+        
     },
 
     revenirAuMenu: function(seconde, decompte) {
