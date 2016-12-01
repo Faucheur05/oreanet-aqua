@@ -51,7 +51,7 @@ var app = {
     //animation
     initializeAnime: function() {
         app.automatic();
-        app.revenirAuMenu(600000, 0);
+        app.revenirAuMenu(300000, 0);
     },
     //Demo
     initializeDemo: function() {
