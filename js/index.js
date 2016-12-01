@@ -61,7 +61,7 @@ var app = {
     // Application Constructor
     initialize: function() {
         //revien au menu au bout de 60s
-        app.revenirAuMenu(60000, 60);     
+        app.revenirAuMenu(120000, 120);     
         this.bindEvents();
         if(app.getUrlVars()["stat"] == null){
             window.location.href="./index.html?stat=off&?id="+app.getUrlVars()["id"];
@@ -77,7 +77,6 @@ var app = {
                 app.switchOnline(0);
                 //On affiche le formulaire
                 document.getElementById("contentoff").id = "content";
-                window.alert("Pour passer en mode En Ligne cliquez sur le bouton Hors Ligne et vice versa!");
                 //console.log("On affiche le formulaire");
              },
             // si on EST connecté
@@ -117,7 +116,7 @@ var app = {
         //afficher la liste
         db.listCOT();
         //revien au menu au bout de 60s
-        app.revenirAuMenu(60000, 60);
+        app.revenirAuMenu(120000, 120);
     },
     // Bind Event Listeners
     bindEvents: function() {
@@ -866,6 +865,12 @@ var app = {
         }
         mycompte = mycompte + n -1;
         app.redemarAuto(mycompte);
+        if(play == false){
+            app.redemarAuto(mycompte - 1);
+            play = true;
+            clearTimeout(settimeRetourMenu);
+            document.getElementById("playPause").className = "glyphicon glyphicon-play";
+        }
     },
 
     //on arrête ou on redémarre le diapo

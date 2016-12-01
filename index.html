@@ -51,10 +51,12 @@
 				<nav class="navbar navbar-default navbar-fixed-top custom-navbar" role="navigation">
 					<div data-role="header">
 						<div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-right">
+							<p id="indication_mode">Cliquez sur le bouton pour changer de mode ==></p>
 							<p id="decompteMenu"></p>
 							<button onclick="return app.changeStatut()" class="ui-btn ui-btn-icon-right fa fa-signal" id="onlinelist"></button>
 							<button id="btn-refresh" onclick="return app.reloadForm()" class="ui-btn ui-btn-icon-right fa fa-refresh"></button>
 							<button id="btn-send" onclick="return app.submitForm()" class="ui-btn ui-btn-icon-right fa fa-paper-plane invalid"></button>
+
 						</div>
 						<div id="navbar" data-role="collapsible" data-collapsed-icon="bars" data-expanded-icon="delete" class="ui-btn-left ui-mini">
 							<h6>Signaler des Acanthasters</h6>

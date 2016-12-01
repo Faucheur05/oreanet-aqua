@@ -580,7 +580,7 @@ input[type=checkbox], input[type=radio] {
 /*animation*/
 .Slides {
   width: 1280px;
-  height: 800px;
+  height: 727px;
 }
 #btnSlides a {
   width: 6%;
@@ -666,7 +666,7 @@ input[type=checkbox], input[type=radio] {
   font-weight: bold;
   width: 300px;
   position: absolute;
-  top:95px;
+  top:73px;
   left:895px;
 }
 
@@ -702,32 +702,14 @@ input[type=checkbox], input[type=radio] {
   top:450px;
   left:70px;
 }
-/*
-.suite_texte{
-  display: none;
-}
 
-.Slides a:hover {
-  color: red !important;
-  opacity: 0.2;
+#lien_site_web{
+  color: black;
+  position: absolute;
+  top:13px;
+  left: 650px;
+  font-size: 14px;
 }
-
-.Slides a {
-  color: red !important;
-  opacity: 0.5;
-}
-
-a{
-  text-decoration: none!important;
-}
-
-a:hover{
-  text-decoration: none!important;
-}
-
-.btn_suite{
-  font-size: 35px;
-}*/
 
 .phrase_en_bas{
   font-weight: bold;
@@ -735,7 +717,7 @@ a:hover{
   background-color: rgba(255, 255, 255, 0.5);
   color: black;
   position: absolute;
-  top:730px;
+  top:660px;
 }
 
 .phrase_1{
@@ -766,7 +748,7 @@ a:hover{
   color: #F7811B;
   font-size: 25px;
   position: absolute;
-  top:740px;
+  top:675px;
   left:1242px;
 }
 /*Demo css*/
@@ -892,11 +874,20 @@ a:hover{
   margin: 0 auto;
 }
 
-/*decomte retour menu*/
+/*décompte retour menu*/
 #decompteMenu{
   display: inline-block;
   padding: 8px;
   margin-top: 2px;
   margin-bottom: 0;
   background-color: #EE9A4D;
+}
+
+/*indication changer de mode*/
+
+#indication_mode{
+  position: absolute;
+  top: 12px;
+  left: -296px
+
 }
